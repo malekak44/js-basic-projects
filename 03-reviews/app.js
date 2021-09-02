@@ -37,3 +37,51 @@ const reviews = [
       "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
   },
 ];
+
+const img = document.querySelector("#person-img");
+const author = document.querySelector("#author");
+const job = document.querySelector("#job");
+const info = document.querySelector("#info");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+const randomBtn = document.querySelector(".random-btn");
+
+let currentItem = 0;
+
+// load initial item
+window.addEventListener("DOMcontentloaded", () => {
+  let review = reviews[currentItem];
+  img.src = review.img;
+  author.textContent = review.name;
+  job.textContent = review.job;
+  info.textContent = review.text;
+});
+
+const showReview = (current) => {
+  let review = reviews[current];
+  img.src = review.img;
+  author.textContent = review.name;
+  job.textContent = review.job;
+  info.textContent = review.text;
+};
+
+prevBtn.addEventListener("click", () => {
+  currentItem--;
+  if (currentItem < 0) {
+    currentItem = reviews.length - 1;
+  }
+  showReview(currentItem);
+});
+
+nextBtn.addEventListener("click", () => {
+  currentItem++;
+  if (currentItem > reviews.length - 1) {
+    currentItem = 0;
+  }
+  showReview(currentItem);
+});
+
+randomBtn.addEventListener("click", () => {
+  currentItem = Math.floor(Math.random() * reviews.length);
+  showReview(currentItem);
+});
