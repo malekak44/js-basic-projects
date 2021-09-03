@@ -1,1 +1,1 @@
-These are the basic projects of JavaScript.
+These are the basic projects of Pure Vanilla JavaScript.
